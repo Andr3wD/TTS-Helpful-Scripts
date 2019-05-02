@@ -7,3 +7,7 @@ All scripts are written in TTSLUA, which is different than regular LUA, so you m
 
 
 
+Table Top Simulator official discord: https://discord.gg/tabletopsimulator
+Table Top Simulator Club (TTSClub) discord: https://discord.me/ttsclub
+
+Feel free to join and ask any questions in the scripting channel if you need any help with scripting.
