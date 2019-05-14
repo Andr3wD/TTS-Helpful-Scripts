@@ -5,7 +5,7 @@
 
 local Promise = (function()
     --- A+ promises in Lua.
-    --- @module deferred
+    --- Based on deferred
 
     local M = {}
 
@@ -212,19 +212,15 @@ local Promise = (function()
         local method = "resolve"
         local pending = #args
         local results = {}
+        results.n = pending
 
-        local function synchronizer(i, resolved)
-            return function(value)
+        for i = 1, pending do
+            args[i]:next(function(value)
                 results[i] = value
-                if not resolved then method = "reject" end
                 pending = pending - 1
                 if pending == 0 then d[method](d, results) end
                 return value
-            end
-        end
-
-        for i = 1, pending do
-            args[i]:next(synchronizer(i, true), synchronizer(i, false))
+            end, function(err) d:reject(err) end)
         end
         return d
     end
