@@ -344,7 +344,7 @@ end
 local function await(promise)
     local co, TTS_main = coroutine.running()
     if TTS_main or not co then error("await is only valid in async function") end
-    promise[next_key](promise, function(...) resume(co, ...) end)
+    promise[next_key](promise, function(...) resume(co, ...) end, function(...) coroPromises[co]:reject(...) end)
     return coroutine.yield()
 end
 
