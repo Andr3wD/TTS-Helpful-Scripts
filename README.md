@@ -6,8 +6,20 @@ When possible, credit will be given inside the scripts or in the commit message.
 All scripts are written in TTSLUA, which is different than regular LUA, so you might see some things done differently than they would be done in regular LUA.
 
 
+## Communication/Personal Help
 
 Table Top Simulator official discord: https://discord.gg/tabletopsimulator <br/>
-Table Top Simulator Club (TTSClub) discord: https://discord.me/ttsclub
+Table Top Simulator Club (TTSClub) discord: https://discord.me/ttsclub <br/>
+Feel free to join and ask any questions in the scripting channel if you need any help with scripting. <br/>
 
-Feel free to join and ask any questions in the scripting channel if you need any help with scripting.
+If you choose to get help in these discords, please follow this list to get help effectively:
+1) State the nature of your scripting emergency. What is your end goal? (Consider: http://xyproblem.info/) <br/>
+2) Provide context. Why are you trying to do it? <br/>
+3) State what you have attempted so far. <br/>
+4) Try not to use pseudo-code unless you haven't written the code yet. Try to provide ALL the relevant bits. <br/>
+
+## Contributing
+
+Feel free to make a pull request with anything that can be helpful for scripters (both new and old).<br/>
+If it doesn't exist already, then please add enough comments to explain how the script works so others can learn.<br/>
+Finally, please follow the general code style of the repository (ex: no obfuscated code, must be relatively easy to read).
