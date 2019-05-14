@@ -9,7 +9,7 @@ function checkForUpdate()
 		if (response[ScriptClass] > ScriptVersion) then
 			print('New Version ('..response[ScriptClass]..') of '..ScriptClass..' is available!')
 			--install update?
-			installUpdate()
+			installUpdate(response[ScriptClass])
 		end
         else
             error(res)
@@ -17,8 +17,8 @@ function checkForUpdate()
     end)
 end
 
-function installUpdate()
-	print('[33ff33]Installing Upgrade to '..ScriptClass..'[-]')
+function installUpdate(newVersion)
+	print('[33ff33]Installing Upgrade to '..ScriptClass..'['..tostring(newVersion)..']')
 	WebRequest.get('yourgithubfile.lua', function(res)
         if (not(res.is_error)) then
 		self.setLuaScript(res.text)
