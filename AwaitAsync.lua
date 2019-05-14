@@ -347,13 +347,42 @@ local function await(promise)
     promise[next_key](promise, function(...) resume(co, ...) end)
     return coroutine.yield()
 end
-local function wait(seconds)
-  local d = Promise.new()
-  Wait.time(function() d:resolve() end, seconds)
-  return d
-end
-local function waitFrames(frames)
-  local d = Promise.new()
-  Wait.frames(function() d:resolve() end, frames)
-  return d
+
+-- Promisified versions of the TTS APIs
+local Async = {}
+if getObjectFromGUID ~= nil then
+    Async.Wait = {
+        frames = function(frames)
+            local d = Promise.new()
+            Wait.frames(function(...) d:resolve(...) end, frames)
+            return d
+        end,
+        time = function(seconds)
+            local d = Promise.new()
+            Wait.time(function(...) d:resolve(...) end, seconds)
+            return d
+        end
+    }
+    local function request(method)
+        return function(...)
+            local req = Promise.new()
+            return setmetatable({ request = req }, { __index = method(..., function(state)
+                 if state.is_done then req:resolve(state.text) else req:reject(state.error) end
+            end) })
+        end
+    end
+    Async.WebRequest = {
+        get = request(WebRequest.get),
+        post = request(WebRequest.post),
+        put = request(WebRequest.put)
+    }
+    Async.spawnObject = function(parameters)
+        local callback_function = parameters.callback_function
+        local d = Promise.new()
+        callback_function = function(obj)
+            d:resolve(obj)
+            if callback_function then callback_function(obj) end
+        end
+        return setmetatable({ whenReady = d }, { __index = (parameters.json and spawnObject or spawnObjectJSON)(parameters) })
+    end
 end
