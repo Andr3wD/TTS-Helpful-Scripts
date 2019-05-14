@@ -6,10 +6,10 @@ function checkForUpdate()
     WebRequest.get('yourgithubfile.json', function(res)
         if (not(res.is_error)) then
             local response = JSON.decode(res.text)
-		if (response[ScriptVersion] > ScriptVersion) then
+		if (response[ScriptClass] > ScriptVersion) then
 			print('New Version ('..response[ScriptClass]..') of '..ScriptClass..' is available!')
 			--install update?
-			installUpdate(response[ScriptVersion])
+			installUpdate(response[ScriptClass])
 		end
         else
             error(res)
