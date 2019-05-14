@@ -342,3 +342,13 @@ local function await(promise)
     promise[next_key](promise, function(...) resume(co, ...) end)
     return coroutine.yield()
 end
+local function wait(seconds)
+  local d = Promise.new()
+  Wait.time(function() d:resolve() end, seconds)
+  return d
+end
+local function waitFrames(frames)
+  local d = Promise.new()
+  Wait.frames(function() d:resolve() end, frames)
+  return d
+end
