@@ -20,6 +20,4 @@ If you choose to get help in these discords, please follow this list to get help
 
 ## Contributing
 
-Feel free to make a pull request with anything that can be helpful for scripters (both new and old).<br/>
-If it doesn't exist already, then please add enough comments to explain how the script works so others can learn.<br/>
-Finally, please follow the general code style of the repository (ex: no obfuscated code, must be relatively easy to read).
+Please read the [Contributing Guideline](/CONTRIBUTING.md) to contribute.
