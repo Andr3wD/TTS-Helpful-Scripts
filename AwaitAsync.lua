@@ -367,7 +367,7 @@ if getObjectFromGUID ~= nil then
         return function(...)
             local req = Promise.new()
             return setmetatable({ request = req }, { __index = method(..., function(state)
-                 if state.is_done then req:resolve(state.text) else req:reject(state.error) end
+                 if state.is_error then req:reject(state.error) else req:resolve(state.text) end
             end) })
         end
     end
