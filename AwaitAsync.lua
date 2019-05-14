@@ -1,3 +1,8 @@
+-- Adds Promise, async, and await variables to the local closure
+-- These works similarly to the javascript keywords with a few changes:
+-- - async returns a new function, this must be assigned to a variable like `myFunc = async(function() end)`
+-- - <Promise>.then is replaced with <Promise>.next to work around 'then' being a lua keyword
+
 local Promise = (function()
     --- A+ promises in Lua.
     --- @module deferred
