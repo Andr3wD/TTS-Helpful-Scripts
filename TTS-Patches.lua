@@ -6,8 +6,8 @@
 -- contains bugs which make our scripts unpredictable, making
 -- writing scripts and debugging difficult.
 
--- These patches fix these issues in the standard library to ensure
--- Lua 5.3 compatible code will work in TTS
+-- These patches fix these issues in the standard library to improve
+-- compatability with standard lua code
 
 -- Unfortunately, there are some language-level issues which we cannot fully solve:
 if false then
