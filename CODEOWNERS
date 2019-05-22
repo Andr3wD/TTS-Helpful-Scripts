@@ -1,3 +1,5 @@
 Tutorials/TTS-Coroutines.lua @Andr3wD
 
 AutoUpdater.lua @RobMayer
+
+TTS-Patches.lua @TomSputz
